@@ -1,16 +1,158 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>The Starbuzz Bean Machine</title>
-  </head>
-  <body>
 
-    <h1>The Starbuzz Bean Machine</h1>
-    <h2>Fill out the form below and click submit to order</h2>
+<head>
+  <meta charset="utf-8">
+  <title>The Starbuzz Bean Machine</title>
+  <link rel="stylesheet" href="starbuzz_absolute_positioning.css">
+  <link rel="stylesheet" href="styledform.css">
+</head>
+
+<body>
+
+  <h1>The Starbuzz Bean Machine</h1>
+  <h2>Fill out the form below and click submit to order</h2>
+  <form action="http://starbuzzcoffee.com/processorder.php" method="post">
+    <!-- Используем <div> с классом tableRow для каждой из строк таблицы -->
+    <div class="tableRow">
+      <p>
+        <!-- Содержимое каждой из ячеек вложен в элемент  <p>-->
+        Choose your beans:
+      </p>
+      <p>
+        <!--Элемент select имеет уникальное имя-->
+        <select name="beans">
+          <!--Внутрь помещены элементы option по одному для каждого сорта -->
+          <!--У каждого элмента <option> есть свое значение-->
+          <!--Когда браузер упаковывает имена и значения формы,он исп. имя элемента select
+              вместе со значением выбранного эленета option beans = "House Blend"-->
+          <option value="House Blend">House Blend
+            <!-- Содержимое элемента исп. в качестве пункта раскрывающего списка-->
+          </option>
+          <option value="Bolivia">Shade Grown Bolivia Supremo</option>
+          <option value="Guatemala">Organic Guatemala</option>
+          <option value="Kenya">Kenya</option>
+        </select>
+      </p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Type:
+      </p>
+      <!--Здесь есть 2 положения переключателя: 1)Whole bean 2)Ground-->
+      <!--для этого мы используем элемент <input> и установим для него тип radio-->
+      <!--beantype уникальное имя.Все положения одного переключателя имеют одно имя-->
+      <!--Значения value которые будут отправлены серверному сценарию.
+                    Причем будет отправлено одно из них-->
+      <p><input type="radio" name="beantype" value="whole">Whole bean<br>
+        <input type="radio" name="beantype" value="ground" checked> Ground
+        <!-- Логический атрибут checked со значением checked 
+              при отображение формы этот элемент будет выбран по умолчанию-->
+      </p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        <!--Задействовав тип number и задав min и max кол-во пакетиков мы можем установить гораничение на ввод значений,
+              если что пользователь получит сообщение об ошибке-->
+        Number of bags:
+      </p>
+      <p>
+        <input type="number" name="bags" min="1" max="10">
+      </p>
+    </div>
+
+    <div class="tableRow label">
+      <p>
+        <!--Благодаря тому что мы здесь применим тип date, браузеры поддерживающие его,будут выводить на экран
+               такой элемент управления как календарь -->
+        Must arrive by date:
+      </p>
+      <p>
+        <input type="date" name="date">
+      </p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Extras:
+      </p>
+      <p>
+        <!--Добавили по одному флажку для каждого параметра,имена элементов одинаковые"extras[]",но значение разные-->
+        <input type="checkbox" name="extras[]" value="giftwrap">Gift wrap <br>
+        <!--Используем атрибут checked для установки флажка по умолчанию-->
+        <input type="checkbox" name="extras[]" value="catalog" checked="checked">Include catalog with order
+      </p>
+    </div>
+
+    <div class="tableRow">
+      <p class="heading">Ship to:</p>
+      <p></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Name:
+      </p>
+      <p> <input type="text" name="name" value=""></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Address:
+      </p>
+      <p><input type="text" name="address" value=""></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        City:
+      </p>
+      <p> <input type="text" name="city" value=""></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        State:
+      </p>
+      <p> <input type="text" name="state" value=""></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Post index:
+      </p>
+      <p><input type="text" name="zip" value=""></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Tel:
+      </p>
+      <p> <input type="tel" name="phone" value=""></p>
+    </div>
+
+    <div class="tableRow">
+      <p>
+        Costumer comments:
+      </p>
+      <p>
+        <!-- Многострочное текстовое поле-->
+        <textarea name="comments" rows="10" cols="48"></textarea>
+      </p>
+    </div>
+
+    <div class="tableRow">
+      <p></p> <!-- Пустая ячейка-->
+      <p>
+        <input type="submit" value="Order Now">
+      </p>
+    </div>
+  </form>
 
 
+</body>
 
-  </body>
 </html>
 
